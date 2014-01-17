@@ -14,13 +14,15 @@
 		ECABBD8F18877D600008C887 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ECABBD8E18877D600008C887 /* main.m */; };
 		ECABBD9318877D600008C887 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ECABBD9218877D600008C887 /* AppDelegate.m */; };
 		ECABBD9618877D600008C887 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECABBD9418877D600008C887 /* Main.storyboard */; };
-		ECABBD9918877D600008C887 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECABBD9818877D600008C887 /* ViewController.m */; };
 		ECABBD9B18877D600008C887 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECABBD9A18877D600008C887 /* Images.xcassets */; };
 		ECABBDA218877D600008C887 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECABBDA118877D600008C887 /* XCTest.framework */; };
 		ECABBDA318877D600008C887 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECABBD8218877D600008C887 /* Foundation.framework */; };
 		ECABBDA418877D600008C887 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECABBD8618877D600008C887 /* UIKit.framework */; };
 		ECABBDAC18877D600008C887 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ECABBDAA18877D600008C887 /* InfoPlist.strings */; };
 		ECABBDAE18877D600008C887 /* todoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ECABBDAD18877D600008C887 /* todoTests.m */; };
+		ECABBDB918877E5B0008C887 /* ToDoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ECABBDB818877E5B0008C887 /* ToDoTableViewController.m */; };
+		ECABBDBC1889E13C0008C887 /* ToDoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ECABBDBB1889E13C0008C887 /* ToDoCell.m */; };
+		ECABBDBE1889E2EC0008C887 /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ECABBDBD1889E2EC0008C887 /* ToDoCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +47,17 @@
 		ECABBD9118877D600008C887 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ECABBD9218877D600008C887 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ECABBD9518877D600008C887 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		ECABBD9718877D600008C887 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		ECABBD9818877D600008C887 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		ECABBD9A18877D600008C887 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		ECABBDA018877D600008C887 /* todoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECABBDA118877D600008C887 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		ECABBDA918877D600008C887 /* todoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "todoTests-Info.plist"; sourceTree = "<group>"; };
 		ECABBDAB18877D600008C887 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ECABBDAD18877D600008C887 /* todoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = todoTests.m; sourceTree = "<group>"; };
+		ECABBDB718877E5B0008C887 /* ToDoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoTableViewController.h; sourceTree = "<group>"; };
+		ECABBDB818877E5B0008C887 /* ToDoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoTableViewController.m; sourceTree = "<group>"; };
+		ECABBDBA1889E13C0008C887 /* ToDoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoCell.h; sourceTree = "<group>"; };
+		ECABBDBB1889E13C0008C887 /* ToDoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoCell.m; sourceTree = "<group>"; };
+		ECABBDBD1889E2EC0008C887 /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +120,13 @@
 				ECABBD9118877D600008C887 /* AppDelegate.h */,
 				ECABBD9218877D600008C887 /* AppDelegate.m */,
 				ECABBD9418877D600008C887 /* Main.storyboard */,
-				ECABBD9718877D600008C887 /* ViewController.h */,
-				ECABBD9818877D600008C887 /* ViewController.m */,
 				ECABBD9A18877D600008C887 /* Images.xcassets */,
 				ECABBD8918877D600008C887 /* Supporting Files */,
+				ECABBDB718877E5B0008C887 /* ToDoTableViewController.h */,
+				ECABBDB818877E5B0008C887 /* ToDoTableViewController.m */,
+				ECABBDBA1889E13C0008C887 /* ToDoCell.h */,
+				ECABBDBB1889E13C0008C887 /* ToDoCell.m */,
+				ECABBDBD1889E2EC0008C887 /* ToDoCell.xib */,
 			);
 			path = todo;
 			sourceTree = "<group>";
@@ -231,6 +239,7 @@
 				ECABBD9B18877D600008C887 /* Images.xcassets in Resources */,
 				ECABBD8D18877D600008C887 /* InfoPlist.strings in Resources */,
 				ECABBD9618877D600008C887 /* Main.storyboard in Resources */,
+				ECABBDBE1889E2EC0008C887 /* ToDoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,9 +258,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECABBD9918877D600008C887 /* ViewController.m in Sources */,
+				ECABBDB918877E5B0008C887 /* ToDoTableViewController.m in Sources */,
 				ECABBD9318877D600008C887 /* AppDelegate.m in Sources */,
 				ECABBD8F18877D600008C887 /* main.m in Sources */,
+				ECABBDBC1889E13C0008C887 /* ToDoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +470,7 @@
 				ECABBDB318877D600008C887 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ECABBDB418877D600008C887 /* Build configuration list for PBXNativeTarget "todoTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +479,7 @@
 				ECABBDB618877D600008C887 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
