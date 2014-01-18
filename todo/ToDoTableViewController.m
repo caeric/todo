@@ -11,7 +11,9 @@
 #import "ToDoEnteredCell.h"
 
 @interface ToDoTableViewController ()
-
+@property (nonatomic, assign) BOOL isAddingToDo;
+@property (nonatomic, strong) UIBarButtonItem *buttonItemDone;
+@property (nonatomic, strong) UIBarButtonItem *buttonItemAdd;
 @end
 
 @implementation ToDoTableViewController
@@ -25,18 +27,39 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.buttonItemAdd = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addToDo)];
+        self.buttonItemDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAddingToDo)];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    UINib *toDoCellNib = [UINib nibWithNibName:@"ToDoCell" bundle:nil];
-    UINib *toDoCellNib = [UINib nibWithNibName:@"ToDoEnteredCell" bundle:nil];
-//    [self.tableView registerNib:toDoCellNib forCellReuseIdentifier:@"ToDoCell"];
-    [self.tableView registerNib:toDoCellNib forCellReuseIdentifier:@"ToDoEnteredCell"];
+    UINib *toDoCellNib = [UINib nibWithNibName:@"ToDoCell" bundle:nil];
+    [self.tableView registerNib:toDoCellNib forCellReuseIdentifier:@"ToDoCell"];
+    UINib *toDoCellEnteredNib = [UINib nibWithNibName:@"ToDoEnteredCell" bundle:nil];
+    [self.tableView registerNib:toDoCellEnteredNib forCellReuseIdentifier:@"ToDoEnteredCell"];
+    self.navigationItem.rightBarButtonItem = self.buttonItemAdd;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)addToDo {
+    self.isAddingToDo = true;
+    self.navigationItem.rightBarButtonItem = self.buttonItemDone;
+}
+
+- (void)doneAddingToDo {
+    self.isAddingToDo = false;
+    self.navigationItem.rightBarButtonItem = self.buttonItemAdd;
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,21 +72,33 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
-    return 5;
+    if (section == 0) {
+        return 1;
+    } else {
+        return 5;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    static NSString *CellIdentifier;
+    ToDoEnteredCell *cell;
+    if (indexPath.section == 0) {
+        CellIdentifier = @"ToDoCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    } else {
+        CellIdentifier = @"ToDoEnteredCell";
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    }
    // static NSString *CellIdentifier = @"ToDoCell";
-     static NSString *CellIdentifier = @"ToDoEnteredCell";
+    
 //    ToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    ToDoEnteredCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
     
     // Configure the cell...
     
