@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C7F301F188A541500490272 /* ToDoEnteredCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C7F301E188A541500490272 /* ToDoEnteredCell.m */; };
+		2C7F3021188A546D00490272 /* ToDoEnteredCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C7F3020188A546D00490272 /* ToDoEnteredCell.xib */; };
 		ECABBD8318877D600008C887 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECABBD8218877D600008C887 /* Foundation.framework */; };
 		ECABBD8518877D600008C887 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECABBD8418877D600008C887 /* CoreGraphics.framework */; };
 		ECABBD8718877D600008C887 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECABBD8618877D600008C887 /* UIKit.framework */; };
@@ -36,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C7F301D188A541500490272 /* ToDoEnteredCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoEnteredCell.h; sourceTree = "<group>"; };
+		2C7F301E188A541500490272 /* ToDoEnteredCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoEnteredCell.m; sourceTree = "<group>"; };
+		2C7F3020188A546D00490272 /* ToDoEnteredCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoEnteredCell.xib; sourceTree = "<group>"; };
 		ECABBD7F18877D600008C887 /* todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECABBD8218877D600008C887 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ECABBD8418877D600008C887 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,6 +132,9 @@
 				ECABBDBA1889E13C0008C887 /* ToDoCell.h */,
 				ECABBDBB1889E13C0008C887 /* ToDoCell.m */,
 				ECABBDBD1889E2EC0008C887 /* ToDoCell.xib */,
+				2C7F301D188A541500490272 /* ToDoEnteredCell.h */,
+				2C7F301E188A541500490272 /* ToDoEnteredCell.m */,
+				2C7F3020188A546D00490272 /* ToDoEnteredCell.xib */,
 			);
 			path = todo;
 			sourceTree = "<group>";
@@ -239,6 +247,7 @@
 				ECABBD9B18877D600008C887 /* Images.xcassets in Resources */,
 				ECABBD8D18877D600008C887 /* InfoPlist.strings in Resources */,
 				ECABBD9618877D600008C887 /* Main.storyboard in Resources */,
+				2C7F3021188A546D00490272 /* ToDoEnteredCell.xib in Resources */,
 				ECABBDBE1889E2EC0008C887 /* ToDoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +270,7 @@
 				ECABBDB918877E5B0008C887 /* ToDoTableViewController.m in Sources */,
 				ECABBD9318877D600008C887 /* AppDelegate.m in Sources */,
 				ECABBD8F18877D600008C887 /* main.m in Sources */,
+				2C7F301F188A541500490272 /* ToDoEnteredCell.m in Sources */,
 				ECABBDBC1889E13C0008C887 /* ToDoCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

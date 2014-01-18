@@ -8,6 +8,7 @@
 
 #import "ToDoTableViewController.h"
 #import "ToDoCell.h"
+#import "ToDoEnteredCell.h"
 
 @interface ToDoTableViewController ()
 
@@ -27,8 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UINib *toDoCellNib = [UINib nibWithNibName:@"ToDoCell" bundle:nil];
-    [self.tableView registerNib:toDoCellNib forCellReuseIdentifier:@"ToDoCell"];
+//    UINib *toDoCellNib = [UINib nibWithNibName:@"ToDoCell" bundle:nil];
+    UINib *toDoCellNib = [UINib nibWithNibName:@"ToDoEnteredCell" bundle:nil];
+//    [self.tableView registerNib:toDoCellNib forCellReuseIdentifier:@"ToDoCell"];
+    [self.tableView registerNib:toDoCellNib forCellReuseIdentifier:@"ToDoEnteredCell"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -57,8 +60,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ToDoCell";
-    ToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+   // static NSString *CellIdentifier = @"ToDoCell";
+     static NSString *CellIdentifier = @"ToDoEnteredCell";
+//    ToDoCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    ToDoEnteredCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     
