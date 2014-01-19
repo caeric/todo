@@ -15,15 +15,14 @@ static NSString *TODO_KEY = @"TODO_KEY";
 @interface ToDoTableViewController ()
 @property (nonatomic, assign) BOOL isAddingToDo;
 @property (nonatomic, strong) UIBarButtonItem *buttonItemDone;
+@property (nonatomic, strong) UIBarButtonItem *buttonItemDoneEdit;
 @property (nonatomic, strong) UIBarButtonItem *buttonItemAdd;
 @property (nonatomic, strong) UITextView *toDoNewTextView;
 @property (nonatomic, strong) UITextField *toDoTextField;
 @property (nonatomic, strong) NSString *toDoNewString;
 @property (nonatomic, strong) NSMutableArray *todosArray;
 @property (nonatomic, strong) NSUserDefaults *userDefaults;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonItemEdit;
-- (IBAction)onEditTapped:(id)sender;
-
+@property (strong, nonatomic) UIBarButtonItem *buttonItemEdit;
 @end
 
 @implementation ToDoTableViewController
@@ -42,6 +41,8 @@ static NSString *TODO_KEY = @"TODO_KEY";
     if (self) {
         self.buttonItemAdd = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addToDo)];
         self.buttonItemDone = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneAddingToDo)];
+        self.buttonItemDoneEdit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditingTodo)];
+        self.buttonItemEdit = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(onEditTapped:)];
         self.userDefaults = [NSUserDefaults standardUserDefaults];
         self.todosArray = [[self.userDefaults arrayForKey:TODO_KEY] mutableCopy];
         if (!self.todosArray) {
@@ -60,6 +61,7 @@ static NSString *TODO_KEY = @"TODO_KEY";
     UINib *toDoCellEnteredNib = [UINib nibWithNibName:@"ToDoEnteredCell" bundle:nil];
     [self.tableView registerNib:toDoCellEnteredNib forCellReuseIdentifier:@"ToDoEnteredCell"];
     self.navigationItem.rightBarButtonItem = self.buttonItemAdd;
+    self.navigationItem.leftBarButtonItem = self.buttonItemEdit;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -73,6 +75,11 @@ static NSString *TODO_KEY = @"TODO_KEY";
     self.navigationItem.rightBarButtonItem = self.buttonItemDone;
     [self.tableView reloadData];
 
+}
+
+- (void)doneEditingTodo {
+    [self setEditing:false animated:YES];
+    self.navigationItem.leftBarButtonItem = self.buttonItemEdit;
 }
 
 - (void)doneAddingToDo {
@@ -156,6 +163,7 @@ static NSString *TODO_KEY = @"TODO_KEY";
 }
 
 - (IBAction)onEditTapped:(id)sender {
+    self.navigationItem.leftBarButtonItem = self.buttonItemDoneEdit;
     [self setEditing: YES animated: YES];
 }
 

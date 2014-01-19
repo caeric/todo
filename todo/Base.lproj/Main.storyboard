@@ -27,16 +27,7 @@
                             <outlet property="delegate" destination="gXd-SR-JTe" id="Oy9-So-nwY"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="To Do List" id="cnp-hq-kZS">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="dda-aI-nra">
-                            <connections>
-                                <action selector="onEditTapped:" destination="gXd-SR-JTe" id="1Bt-YA-LhA"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="buttonItemEdit" destination="dda-aI-nra" id="j6G-0g-Cgi"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="To Do List" id="cnp-hq-kZS"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="imW-0i-aQp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
