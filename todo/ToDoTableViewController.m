@@ -57,11 +57,14 @@
 - (void)addToDo {
     self.isAddingToDo = true;
     self.navigationItem.rightBarButtonItem = self.buttonItemDone;
+    [self.tableView reloadData];
+
 }
 
 - (void)doneAddingToDo {
     self.isAddingToDo = false;
     self.navigationItem.rightBarButtonItem = self.buttonItemAdd;
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -74,12 +77,18 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+//    NSLog(@"%@", @"# of sections");
+    if (self.isAddingToDo) {
+        return 2;
+    }
+    return 1;
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
+//    NSLog(@"%@", @"# of rows in section");
+    if (self.isAddingToDo && section == 0) {
         return 1;
     } else {
         return 5;
@@ -88,9 +97,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+//    NSLog(@"%@", @"in cell for row index pat");
     static NSString *CellIdentifier;
     UITableViewCell *cell;
-    if (indexPath.section == 0) {
+    if (self.isAddingToDo && indexPath.section == 0) {
         CellIdentifier = @"ToDoCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         ((ToDoCell*)cell).toDoItemTextView.delegate = self;
@@ -120,8 +130,8 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.toDoNewTextView && indexPath.section == 0 && indexPath.row == 0) {
-        NSLog(@"%f", self.toDoNewTextView.contentSize.height);
+    if (self.isAddingToDo && self.toDoNewTextView && indexPath.section == 0 && indexPath.row == 0) {
+//        NSLog(@"%f", self.toDoNewTextView.contentSize.height);
         if (self.toDoNewTextView.contentSize.height > 44) {
             return self.toDoNewTextView.contentSize.height;
         }
