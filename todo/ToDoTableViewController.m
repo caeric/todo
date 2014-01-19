@@ -21,6 +21,9 @@ static NSString *TODO_KEY = @"TODO_KEY";
 @property (nonatomic, strong) NSString *toDoNewString;
 @property (nonatomic, strong) NSMutableArray *todosArray;
 @property (nonatomic, strong) NSUserDefaults *userDefaults;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonItemEdit;
+- (IBAction)onEditTapped:(id)sender;
+
 @end
 
 @implementation ToDoTableViewController
@@ -127,6 +130,7 @@ static NSString *TODO_KEY = @"TODO_KEY";
     } else {
         CellIdentifier = @"ToDoEnteredCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        cell.showsReorderControl = YES;
         self.toDoTextField = ((ToDoEnteredCell*)cell).todo;
         ((ToDoEnteredCell*)cell).todo.text = [self.todosArray objectAtIndex:indexPath.row];
     }
@@ -149,6 +153,47 @@ static NSString *TODO_KEY = @"TODO_KEY";
         }
     }
     return self.tableView.rowHeight;
+}
+
+- (IBAction)onEditTapped:(id)sender {
+    [self setEditing: YES animated: YES];
+}
+
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    [super setEditing:editing animated:animated];
+    if (editing) {
+        self.buttonItemAdd.enabled = NO;
+    } else {
+        self.buttonItemAdd.enabled = YES;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // If row is deleted, remove it from the list.
+    NSLog(@"");
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.todosArray removeObjectAtIndex:indexPath.row];
+        [self.userDefaults setObject:self.todosArray forKey:TODO_KEY];
+        [self.userDefaults synchronize];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    
+}
+
+- (NSIndexPath *)tableView:(UITableView *)tableView
+targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+       toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
+    NSString *srcString = [self.todosArray objectAtIndex:sourceIndexPath.row];
+    NSString *destString = [self.todosArray objectAtIndex:proposedDestinationIndexPath.row];
+    [self.todosArray replaceObjectAtIndex:proposedDestinationIndexPath.row withObject:srcString];
+    [self.todosArray replaceObjectAtIndex:sourceIndexPath.row withObject:destString];
+    [self.userDefaults setObject:self.todosArray forKey:TODO_KEY];
+    [self.userDefaults synchronize];
+    return proposedDestinationIndexPath;
 }
 
 @end
