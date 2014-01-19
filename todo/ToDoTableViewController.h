@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ToDoTableViewController : UITableViewController <UITextViewDelegate>
+@interface ToDoTableViewController : UITableViewController <UITextViewDelegate, UITextFieldDelegate>
 
 
 @end

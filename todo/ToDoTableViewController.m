@@ -72,6 +72,7 @@ static NSString *TODO_KEY = @"TODO_KEY";
 
 - (void)addToDo {
     self.isAddingToDo = true;
+    self.navigationItem.leftBarButtonItem.enabled = NO;
     self.navigationItem.rightBarButtonItem = self.buttonItemDone;
     [self.tableView reloadData];
 
@@ -92,6 +93,7 @@ static NSString *TODO_KEY = @"TODO_KEY";
     }
     self.isAddingToDo = false;
     self.navigationItem.rightBarButtonItem = self.buttonItemAdd;
+    self.navigationItem.leftBarButtonItem.enabled = YES;
     [self.tableView reloadData];
 }
 
@@ -134,11 +136,14 @@ static NSString *TODO_KEY = @"TODO_KEY";
         ((ToDoCell*)cell).toDoItemTextView.delegate = self;
         ((ToDoCell*)cell).toDoItemTextView.contentSize = CGSizeMake(((ToDoCell*)cell).toDoItemTextView.contentSize.width, 44);
         self.toDoNewTextView = ((ToDoCell*)cell).toDoItemTextView;
+        [self.toDoNewTextView becomeFirstResponder];
     } else {
         CellIdentifier = @"ToDoEnteredCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         cell.showsReorderControl = YES;
         self.toDoTextField = ((ToDoEnteredCell*)cell).todo;
+        ((ToDoEnteredCell*)cell).todo.delegate = self;
+        ((ToDoEnteredCell*)cell).todo.tag = indexPath.row;
         ((ToDoEnteredCell*)cell).todo.text = [self.todosArray objectAtIndex:indexPath.row];
     }
     return cell;
@@ -149,6 +154,12 @@ static NSString *TODO_KEY = @"TODO_KEY";
     self.toDoNewString = textView.text;
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self.todosArray replaceObjectAtIndex:textField.tag withObject:textField.text];
+    [self.userDefaults setObject:self.todosArray forKey:TODO_KEY];
+    [self.userDefaults synchronize];
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -162,7 +173,7 @@ static NSString *TODO_KEY = @"TODO_KEY";
     return self.tableView.rowHeight;
 }
 
-- (IBAction)onEditTapped:(id)sender {
+- (void)onEditTapped:(id)sender {
     self.navigationItem.leftBarButtonItem = self.buttonItemDoneEdit;
     [self setEditing: YES animated: YES];
 }
@@ -170,11 +181,14 @@ static NSString *TODO_KEY = @"TODO_KEY";
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
+    NSArray *visibleCells = [self.tableView visibleCells];
     if (editing) {
         self.buttonItemAdd.enabled = NO;
     } else {
         self.buttonItemAdd.enabled = YES;
     }
+    for (ToDoEnteredCell *cell in visibleCells)
+        cell.todo.enabled = editing;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
