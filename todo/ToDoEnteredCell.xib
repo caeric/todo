@@ -13,7 +13,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="To do to do to do to do" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5so-3Z-tQx">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To do to do to do to do" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5so-3Z-tQx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -21,10 +21,10 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="5so-3Z-tQx" firstAttribute="leading" secondItem="3HB-sc-dDH" secondAttribute="leading" constant="10" id="AGb-1G-6mY"/>
-                    <constraint firstAttribute="bottom" secondItem="5so-3Z-tQx" secondAttribute="bottom" id="Tlx-Fp-5Nz"/>
-                    <constraint firstItem="5so-3Z-tQx" firstAttribute="top" secondItem="3HB-sc-dDH" secondAttribute="top" id="aei-Iy-CMg"/>
-                    <constraint firstAttribute="trailing" secondItem="5so-3Z-tQx" secondAttribute="trailing" constant="10" id="qUk-na-E2f"/>
+                    <constraint firstAttribute="trailing" secondItem="5so-3Z-tQx" secondAttribute="trailing" id="COv-Ta-1sH"/>
+                    <constraint firstAttribute="bottom" secondItem="5so-3Z-tQx" secondAttribute="bottom" id="eoz-5Q-3os"/>
+                    <constraint firstItem="5so-3Z-tQx" firstAttribute="leading" secondItem="3HB-sc-dDH" secondAttribute="leading" id="fcf-Ge-XBh"/>
+                    <constraint firstItem="5so-3Z-tQx" firstAttribute="top" secondItem="3HB-sc-dDH" secondAttribute="top" id="nNt-MT-9q0"/>
                 </constraints>
             </tableViewCellContentView>
         </tableViewCell>

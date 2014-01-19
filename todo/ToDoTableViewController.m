@@ -14,6 +14,8 @@
 @property (nonatomic, assign) BOOL isAddingToDo;
 @property (nonatomic, strong) UIBarButtonItem *buttonItemDone;
 @property (nonatomic, strong) UIBarButtonItem *buttonItemAdd;
+@property (nonatomic, strong) UITextView *toDoNewTextView;
+@property (nonatomic, strong) NSString *toDoNewString;
 @end
 
 @implementation ToDoTableViewController
@@ -87,13 +89,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier;
-    ToDoEnteredCell *cell;
+    UITableViewCell *cell;
     if (indexPath.section == 0) {
         CellIdentifier = @"ToDoCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+        ((ToDoCell*)cell).toDoItemTextView.delegate = self;
+        ((ToDoCell*)cell).toDoItemTextView.contentSize = CGSizeMake(((ToDoCell*)cell).toDoItemTextView.contentSize.width, 44);
+        self.toDoNewTextView = ((ToDoCell*)cell).toDoItemTextView;
     } else {
         CellIdentifier = @"ToDoEnteredCell";
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
     }
    // static NSString *CellIdentifier = @"ToDoCell";
     
@@ -103,6 +109,24 @@
     // Configure the cell...
     
     return cell;
+}
+
+- (void) textViewDidChange:(UITextView *)textView
+{
+    self.toDoNewString = textView.text;
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.toDoNewTextView && indexPath.section == 0 && indexPath.row == 0) {
+        NSLog(@"%f", self.toDoNewTextView.contentSize.height);
+        if (self.toDoNewTextView.contentSize.height > 44) {
+            return self.toDoNewTextView.contentSize.height;
+        }
+    }
+    return self.tableView.rowHeight;
 }
 
 /*
