@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ToDoEnteredCell : UITableViewCell
+@property (nonatomic, weak) IBOutlet UITextField *todo;
 
 @end

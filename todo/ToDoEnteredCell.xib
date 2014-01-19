@@ -13,20 +13,23 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To do to do to do to do" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5so-3Z-tQx">
-                        <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="517-n2-Bkf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="5so-3Z-tQx" firstAttribute="leading" secondItem="3HB-sc-dDH" secondAttribute="leading" constant="10" id="2JJ-c1-JAA"/>
-                    <constraint firstAttribute="bottom" secondItem="5so-3Z-tQx" secondAttribute="bottom" id="GQ0-iS-mCh"/>
-                    <constraint firstItem="5so-3Z-tQx" firstAttribute="top" secondItem="3HB-sc-dDH" secondAttribute="top" id="X5b-ov-oQB"/>
-                    <constraint firstAttribute="trailing" secondItem="5so-3Z-tQx" secondAttribute="trailing" constant="10" id="nmT-K8-CTI"/>
+                    <constraint firstAttribute="bottom" secondItem="517-n2-Bkf" secondAttribute="bottom" id="2Pn-8Z-PZN"/>
+                    <constraint firstAttribute="trailing" secondItem="517-n2-Bkf" secondAttribute="trailing" id="QjZ-fO-1V9"/>
+                    <constraint firstItem="517-n2-Bkf" firstAttribute="top" secondItem="3HB-sc-dDH" secondAttribute="top" id="eHj-25-I1v"/>
+                    <constraint firstItem="517-n2-Bkf" firstAttribute="leading" secondItem="3HB-sc-dDH" secondAttribute="leading" id="x5l-3e-wA3"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="todo" destination="517-n2-Bkf" id="OK1-01-Xkj"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>
